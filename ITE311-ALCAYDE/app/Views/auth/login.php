@@ -1,68 +1,84 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-     <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login</title>
+  <link 
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+  rel="stylesheet" 
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
+  crossorigin="anonymous">
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: hsl(219, 12%, 23%, 1.00);
+      }
+  </style>
+
 </head>
 <body>
-  <?php if(session()->getFlashdata('error')): ?>
-        <div class="alert alert-danger">
-          <?= esc(session()->getFlashdata('error') )?>
-        </div>
-  <?php endif; ?>
-  <?php if(session()->getFlashdata('success')): ?>
-        <div class="alert alert-success">
-          <?= esc(session()->getFlashdata('success')) ?>
-        </div>
-  <?php endif; ?>
-  <?php if(session()->getFlashdata('restricted')): ?>
-        <div class="alert alert-success">
-          <?= esc(session()->getFlashdata('restricted')) ?>
-        </div>
-  <?php endif; ?>
-  <?php if(isset($validation)): ?>
-        <div class="alert alert-danger">
-          <?= $validation->listErrors() ?>
-        </div>
-  <?php endif; ?>
 
-   <form action="<?= site_url('login') ?>" method="post">
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card shadow-lg p-4 rounded-4" style="max-width: 420px; width: 100%;">
+    <h2 class="text-center mb-4">Log In</h2>
+
+    <!-- Flash & Validation Messages -->
+    <?php if(session()->getFlashdata('error')): ?>
+      <div class="alert alert-danger"><?= esc(session()->getFlashdata('error')) ?></div>
+    <?php endif; ?>
+
+    <?php if(session()->getFlashdata('success')): ?>
+      <div class="alert alert-success"><?= esc(session()->getFlashdata('success')) ?></div>
+    <?php endif; ?>
+
+    <?php if(isset($validation)): ?>
+      <div class="alert alert-warning"><?= $validation->listErrors() ?></div>
+    <?php endif; ?>
+
+    <!-- Login Form -->
+    <form action="<?= site_url('login') ?>" method="post">
       <?= csrf_field() ?>
-        <h1>Log In</h1>
-      <div class="form-floating mb-3">
-        <input type="email" name="email" class="form-control" id="floatingInput" required placeholder="email@example.com">
-        <label for="floatingInput">Email</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="password" name="password" class="form-control" id="floatingInput" required placeholder="Password123">
-        <label for="floatingInput">Password</label>
-      </div>
-      <br>
-      <p>Don't have an account? <a href="register">Register</a></p>
-      <button  type="submit" class="btn btn-success" id="login">Login</button>
-    </form>
-    <script src="<?= base_url('js/bootstrap.min.js') ?>"></script>
-    </body>
-</html>
 
-<style>
-   body{
-      display: grid;
-      height: 100vh;
-      place-items: center;
-   }
-   #login{
-    width: 100%;
-   }
-   .form-control{
-    width: 300px;
-   }
-   form{
-    text-align: center;
-    border: 0.1px solid black;
-    padding: 50px;
-    border-radius: 15px;
-   }
-  </style>
+      <div class="mb-3">
+        <label for="emailInput" class="form-label">Email Address</label>
+        <input 
+          type="email" 
+          id="emailInput" 
+          name="email" 
+          class="form-control" 
+          placeholder="name@example.com" 
+          required>
+      </div>
+
+      <div class="mb-4">
+        <label for="passwordInput" class="form-label">Password</label>
+        <input 
+          type="password" 
+          id="passwordInput" 
+          name="password" 
+          class="form-control" 
+          placeholder="********" 
+          required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100 mb-3">Login</button>
+
+      <p class="text-center mb-0">
+        Don’t have an account? <a href="<?= site_url('register') ?>">Register here</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<script 
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+  crossorigin="anonymous"></script>
+</body>
+</html>

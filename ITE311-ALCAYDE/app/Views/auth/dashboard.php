@@ -1,265 +1,329 @@
-<?= $this->include('templates/header') ?> <!-- Include the header template for consistent layout -->
+<?= $this->include('templates/header') ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"> <!-- Set character encoding for the document -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive design for mobile devices -->
-    <title>Admin Dashboard</title> <!-- Title of the page -->
-    <style>
-        /* Custom styles for the dashboard layout */
-        html, body {
-            height: 100vh; /* Full height of the viewport */
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-            overflow: auto; /* Allow scrolling if content overflows */
-        }
-        nav {
-            display: block; /* Ensure the navigation is displayed as a block element */
-        }
-        #main-page {
-            justify-content: center; /* Center content in the main page */
-        }
-        .card {
-            display: inline-block; /* Allow cards to be displayed inline */
-            place-items: center; /* Center items within the card */
-        }
-        .Anouncements, .deadlines, .activities, .analytics {
-            width: 100%; /* Full width for these sections */
-        }
-        .an-head, .dead-head, .act-head, .ann-head {
-            background-color: lightgray; /* Light gray background for section headers */
-            padding: 5px; /* Padding around the header */
-            display: flex; /* Use flexbox for layout */
-        }
-        .btn-group {
-            margin-left: auto; /* Align button group to the right */
-        }
-        .courses, .assignments {
-            float: left; /* Float to the left for layout */
-            width: 30%; /* Set width for courses and assignments sections */
-            height: 100%; /* Full height */
-            overflow: auto; /* Allow scrolling if content overflows */
-            padding: 10px; /* Padding inside the sections */
-            background-color: rgb(247, 245, 243); /* Light background color */
-        }
-        .notifications, .grading {
-            float: right; /* Float to the right for layout */
-            overflow: auto; /* Allow scrolling if content overflows */
-            width: 70%; /* Set width for notifications and grading sections */
-            height: 100%; /* Full height */
-            padding: 10px; /* Padding inside the sections */
-        }
-        .ass {
-            background-color: blue; /* Blue background for assignments header */
-            color: white; /* White text color */
-            padding: 5px; /* Padding around the header */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= esc(session()->get('user_role')) ?> | Dashboard</title>
 
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: hsl(219, 12%, 23%, 1.00);
+      }
+      #min{
+        margin-top: 20px;
+      }
+  </style>
 </head>
 <body>
-  <?php if (session()->get('user_role') === 'admin'): ?> <!-- Check if the logged-in user is an admin -->
-    <!-- Admin dashboard main container -->
-    <div id="main-page" class="navbar navbar-expand-lg bg-transparent">
-        <!-- Total Users Card -->
-        <div class="card" style="border: none">
-            <div class="card text-bg-primary mb-3" style="max-width: 50rem; max-height: 10rem; margin: 20px;">
-                <div class="card-header">Total Users</div> <!-- Card header -->
-                <div class="card-body">
-                    <h5 class="card-title">0</h5> <!-- Placeholder for total users count -->
-                    <p class="card-text">Number of registered users.</p> <!-- Description -->
-                </div>
-            </div>
-
-            <!-- Active Classes Card -->
-            <div class="card text-bg-success mb-3" style="max-width: 50rem; max-height: 10rem; margin: 20px;">
-                <div class="card-header">Active Classes</div> <!-- Card header -->
-                <div class="card-body">
-                    <h5 class="card-title">0</h5> <!-- Placeholder for active classes count -->
-                    <p class="card-text">Number of active classes.</p> <!-- Description -->
-                </div>
-            </div>
-      
-            <!-- Total Courses Card -->
-            <div class="card text-bg-warning mb-3" style="max-width: 50rem; margin: 20px; max-height: 10rem;">
-                <div class="card-header">Total Courses</div> <!-- Card header -->
-                <div class="card-body">
-                    <h5 class="card-title">0</h5> <!-- Placeholder for total courses count -->
-                    <p class="card-text">Number of available courses.</p> <!-- Description -->
-                </div>
-            </div>
-
-            <!-- Upcoming Events Card -->
-            <div class="card text-bg-info mb-3" style="max-width: 50rem; margin: 20px; max-height: 10rem;">
-                <div class="card-header">Upcoming Events</div> <!-- Card header -->
-                <div class="card-body">
-                    <h5 class="card-title">0</h5> <!-- Placeholder for upcoming events count -->
-                    <p class="card-text">Upcoming Event this month.</p> <!-- Description -->
-                </div>
-            </div>
-
-            <!-- Notifications Card -->
-            <div class="card text-bg-danger mb-3" style="max-width: 50rem; margin: 20px; max-height: 10rem;">
-                <div class="card-header">Notifications</div> <!-- Card header -->
-                <div class="card-body">
-                    <h5 class="card-title">0</h5> <!-- Placeholder for notifications count -->
-                    <p class="card-text">Upcoming Event this month.</p> <!-- Description -->
-                </div>
-            </div>
+  <?php if (session()->get('user_role') === 'admin'): ?>
+     <!-- Main Content -->
+  <main id="min" class="content container">
+     <h2 class="mb-4 text-success fw-bold">Welcome, <?= session()->get('user_name') ?? 'Admin' ?></h2>
+    <!-- Quick Stats Section -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-people fs-1 text-success"></i>
+          <h3>245</h3>
+          <p>Total Users</p>
         </div>
-    </div>
-
-    <!-- Announcements Section -->
-    <div class="Anouncements">
-        <div class="an-head">
-            <h3>Announcements</h3> <!-- Section title -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Filter by Date <!-- Button to filter announcements by date -->
-                </button>
-                <ul class="dropdown-menu p-3" style="min-width: 250px;">
-                    <form action="" method="GET"> <!-- Form for date filtering -->
-                        <div class="mb-3">
-                            <label for="filterDate" class="form-label fw-semibold">Select Date</label> <!-- Date label -->
-                            <input type="date" id="filterDate" name="date" class="form-control"> <!-- Date input -->
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <button type="reset" class="btn btn-sm btn-outline-secondary">Clear</button> <!-- Clear button -->
-                            <button type="submit" class="btn btn-sm btn-primary">Apply</button> <!-- Apply filter button -->
-                        </div>
-                    </form>
-                </ul>
-            </div>
-        </div>
-        <h5>No Announcements at the Moment</h5> <!-- Placeholder message for announcements -->
-    </div>
-
-    <!-- Deadlines and Events Section -->
-    <div class="deadlines">
-        <div class="dead-head">
-            <h3>Events and Deadlines</h3> <!-- Section title -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Filter by Date <!-- Button to filter events and deadlines by date -->
-                </button>
-                <ul class="dropdown-menu p-3" style="min-width: 250px;">
-                    <form action="" method="GET"> <!-- Form for date filtering -->
-                        <div class="mb-3">
-                            <label for="filterDate" class="form-label fw-semibold">Select Date</label> <!-- Date label -->
-                            <input type="date" id="filterDate" name="date" class="form-control"> <!-- Date input -->
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <button type="reset" class="btn btn-sm btn-outline-secondary">Clear</button> <!-- Clear button -->
-                            <button type="submit" class="btn btn-sm btn-primary">Apply</button> <!-- Apply filter button -->
-                        </div>
-                    </form>
-                </ul>
-            </div>
-        </div>
-        <h5>No Events or Deadlines at the Moment</h5> <!-- Placeholder message for events and deadlines -->
-    </div>
-
-    <!-- Activities Section -->
-    <div class="activities">
-        <div class="act-head">
-            <h3>Recent Activities</h3> <!-- Section title -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Filter by Date <!-- Button to filter activities by date -->
-                </button>
-                <ul class="dropdown-menu p-3" style="min-width: 250px;">
-                    <form action="" method="GET"> <!-- Form for date filtering -->
-                        <div class="mb-3">
-                            <label for="filterDate" class="form-label fw-semibold">Select Date</label> <!-- Date label -->
-                            <input type="date" id="filterDate" name="date" class="form-control"> <!-- Date input -->
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <button type="reset" class="btn btn-sm btn-outline-secondary">Clear</button> <!-- Clear button -->
-                            <button type="submit" class="btn btn-sm btn-primary">Apply</button> <!-- Apply filter button -->
-                        </div>
-                    </form>
-                </ul>
-            </div>
-        </div>
-        <h5>No Activities at the Moment</h5> <!-- Placeholder message for activities -->
-    </div>
-
-    <!-- Analytics Section -->
-    <div class="analytics">
-        <div class="ann-head">
-            <h3>Recent Analytics</h3> <!-- Section title -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    Filter by Date <!-- Button to filter analytics by date -->
-                </button>
-                <ul class="dropdown-menu p-3" style="min-width: 250px;">
-                    <form action="" method="GET"> <!-- Form for date filtering -->
-                        <div class="mb-3">
-                            <label for="filterDate" class="form-label fw-semibold">Select Date</label> <!-- Date label -->
-                            <input type="date" id="filterDate" name="date" class="form-control"> <!-- Date input -->
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <button type="reset" class="btn btn-sm btn-outline-secondary">Clear</button> <!-- Clear button -->
-                            <button type="submit" class="btn btn-sm btn-primary">Apply</button> <!-- Apply filter button -->
-                        </div>
-                    </form>
-                </ul>
-            </div>
-        </div>
-        <h5>Nothing to show at the moment</h5> <!-- Placeholder message for analytics -->
-    </div>
-
-  <?php endif; ?> <!-- End of admin role check -->
-
-  <?php if (session()->get('user_role') === 'teacher'): ?> <!-- Check if the logged-in user is a teacher -->
-      <div class="courses">
-        <h4>My Teached Courses</h4> <!-- Section title for courses -->
-        <ul class="list-group mb-4">
-        <?php foreach ($courses ?? [] as $c): ?> <!-- Loop through courses array -->
-          <li class="list-group-item"><?= esc($c['title']) ?></li> <!-- Display course title -->
-        <?php endforeach; ?>
-       </ul>
-      <a href="<?= base_url('#') ?>" class="btn btn-primary">Add new Course</a> <!-- Button to add a new course -->
       </div>
-      
-      <div class="notifications">
-        <h4>Notifications</h4> <!-- Section title for notifications -->
-        <div class="alert alert-info">You have <?= esc($newAssignments ?? 0) ?> new assignments submitted.</div> <!-- Display number of new assignments -->
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-book fs-1 text-info"></i>
+          <h3>38</h3>
+          <p>Courses</p>
+        </div>
       </div>
-    <?php endif; ?> <!-- End of teacher role check -->
-
-  <?php if (session()->get('user_role') === 'student'): ?> <!-- Check if the logged-in user is a student -->
-    <div class="assignments">
-        <h4 class="ass">Assignments</h4> <!-- Section title for assignments -->
-        <ul class="list-group mb-4">
-          <?php foreach ($deadlines ?? [] as $d): ?> <!-- Loop through deadlines array -->
-            <li class="list-group-item"><?= esc($d['course']) ?> - <?= esc($d['date']) ?></li> <!-- Display course and deadline date -->
-          <?php endforeach; ?>
-        </ul>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-megaphone fs-1 text-warning"></i>
+          <h3>12</h3>
+          <p>Announcements</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-graph-up-arrow fs-1 text-danger"></i>
+          <h3>98%</h3>
+          <p>Activity Rate</p>
+        </div>
+      </div>
     </div>
 
-    <div class="grading">
-      <h4>Recent Grades</h4> <!-- Section title for recent grades -->
-      <table class="table table-bordered"> <!-- Table for displaying grades -->
-        <thead>
-          <tr>
-            <th>Course</th> <!-- Column for course name -->
-            <th>Grade</th> <!-- Column for grade -->
-            <th>Feedback</th> <!-- Column for feedback -->
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($grades ?? [] as $g): ?> <!-- Loop through grades array -->
-            <tr>
-              <td><?= esc($g['course']) ?></td> <!-- Display course name -->
-              <td><?= esc($g['grade']) ?></td> <!-- Display grade -->
-              <td><?= esc($g['feedback']) ?></td> <!-- Display feedback -->
-            </tr>
-          <?php endforeach; ?>
-        </tbody>
-      </table>
+    <!-- Management Sections -->
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-person-gear"></i> User Management</h5>
+            <p class="card-text">View, add, and manage teachers, students, and admins.</p>
+            <a href="#" class="btn btn-success w-100">Go to Users</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-book-half"></i> Course Management</h5>
+            <p class="card-text">Create and assign courses, update details, and monitor progress.</p>
+            <a href="#" class="btn btn-success w-100">Go to Courses</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-megaphone"></i> Announcements</h5>
+            <p class="card-text">Post new announcements for students and faculty.</p>
+            <a href="#" class="btn btn-success w-100">Manage Announcements</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-bar-chart"></i> Reports & Analytics</h5>
+            <p class="card-text">Track course performance, student progress, and system usage.</p>
+            <a href="#" class="btn btn-success w-100">View Reports</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-chat-dots"></i> Feedback & Support</h5>
+            <p class="card-text">View feedback submitted by users and respond accordingly.</p>
+            <a href="#" class="btn btn-success w-100">View Feedback</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-shield-lock"></i> System Settings</h5>
+            <p class="card-text">Manage LMS configurations, user roles, and permissions.</p>
+            <a href="#" class="btn btn-success w-100">Open Settings</a>
+          </div>
+        </div>
+      </div>
     </div>
-  <?php endif; ?> <!-- End of student role check -->
+  </main
+  <?php endif; ?>
+
+  <?php if (session()->get('user_role') === 'student'): ?>
+    <!-- Main Content -->
+  <main class="content container">
+    <h2 class="mb-4 text-success fw-bold">Welcome, <?= session()->get('user_name') ?? 'Student' ?></h2>
+
+    <!-- Quick Stats -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-book fs-1 text-success"></i>
+          <h3>5</h3>
+          <p>Enrolled Courses</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-award fs-1 text-info"></i>
+          <h3>3.8</h3>
+          <p>GPA</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-check2-circle fs-1 text-warning"></i>
+          <h3>12</h3>
+          <p>Completed Modules</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-megaphone fs-1 text-danger"></i>
+          <h3>4</h3>
+          <p>New Announcements</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Student Panels -->
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-book-half"></i> My Courses</h5>
+            <p class="card-text">View all your enrolled subjects and access course materials.</p>
+            <a href="#" class="btn btn-success w-100">View Courses</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-bar-chart-line"></i> My Grades</h5>
+            <p class="card-text">Check your grades, GPA, and performance analytics.</p>
+            <a href="#" class="btn btn-success w-100">View Grades</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-megaphone"></i> Announcements</h5>
+            <p class="card-text">Read updates and announcements from your instructors.</p>
+            <a href="#" class="btn btn-success w-100">Read Announcements</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-calendar-event"></i> Class Schedule</h5>
+            <p class="card-text">View your upcoming classes and important events.</p>
+            <a href="#" class="btn btn-success w-100">View Schedule</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-chat-dots"></i> Messages</h5>
+            <p class="card-text">Communicate with your teachers and classmates easily.</p>
+            <a href="#" class="btn btn-success w-100">Open Messages</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-person-circle"></i> Settings</h5>
+            <p class="card-text">Update your profile information and change your password.</p>
+            <a href="#" class="btn btn-success w-100">Go to Settings</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <?php endif; ?>
+
+  <?php if (session()->get('user_role') === 'teacher'): ?>
+    <!-- Main Content -->
+  <main class="content container">
+    <h2 class="mb-4 text-success fw-bold">Welcome, <?= session()->get('user_name') ?? 'Teacher' ?></h2>
+
+    <!-- Quick Stats -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-journal-text fs-1 text-success"></i>
+          <h3>4</h3>
+          <p>Courses Taught</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-people fs-1 text-info"></i>
+          <h3>120</h3>
+          <p>Active Students</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-pencil-square fs-1 text-warning"></i>
+          <h3>8</h3>
+          <p>Assignments Posted</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="card stats-card p-3 shadow-sm">
+          <i class="bi bi-megaphone fs-1 text-danger"></i>
+          <h3>3</h3>
+          <p>Announcements</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teacher Tools -->
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-book"></i> Manage Courses</h5>
+            <p class="card-text">Create, update, or delete the courses you handle.</p>
+            <a href="#" class="btn btn-success w-100">Manage Courses</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-people"></i> View Class List</h5>
+            <p class="card-text">Check your students, attendance, and performance details.</p>
+            <a href="#" class="btn btn-success w-100">View Class</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-award"></i> Grade Submissions</h5>
+            <p class="card-text">Review and grade assignments submitted by your students.</p>
+            <a href="#" class="btn btn-success w-100">Grade Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-megaphone"></i> Announcements</h5>
+            <p class="card-text">Post and manage course announcements and reminders.</p>
+            <a href="#" class="btn btn-success w-100">Post Announcement</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-chat-dots"></i> Messages</h5>
+            <p class="card-text">Communicate with your students through the LMS message system.</p>
+            <a href="#" class="btn btn-success w-100">Open Messages</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-calendar-event"></i> Schedule</h5>
+            <p class="card-text">View your teaching schedule and upcoming sessions.</p>
+            <a href="#" class="btn btn-success w-100">View Schedule</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <?php endif; ?>
 </body>
 </html>

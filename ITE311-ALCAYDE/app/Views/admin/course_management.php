@@ -1,1 +1,0 @@
-<?= $this->include('templates/header') ?>

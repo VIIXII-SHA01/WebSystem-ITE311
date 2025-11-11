@@ -28,7 +28,6 @@ class Paths
      */
     public string $systemDirectory = __DIR__ . '/../../system';
 
-
     /**
      * ---------------------------------------------------------------
      * APPLICATION FOLDER NAME
