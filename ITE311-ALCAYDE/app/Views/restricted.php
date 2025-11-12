@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #f8f9fa;
+      background-color: hsl(219, 12%, 23%, 1.00);
       height: 100vh;
       display: flex;
       justify-content: center;
@@ -50,7 +50,7 @@
     <div class="mt-4 d-flex flex-column gap-2">
       <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#requestModal">✉️ Request Access</button>
       <a href="mailto:admin@example.com" class="btn btn-outline-secondary">📧 Contact Admin</a>
-      <a href="/logout" class="btn btn-outline-dark">↩️ Sign Out</a>
+      <a href="<?=  base_url('logout') ?>" class="btn btn-outline-dark">↩️ Sign Out</a>
     </div>
 
     <div class="mt-4">

@@ -21,6 +21,33 @@
   </style>
 </head>
 <body>
+   <?php if (session()->getFlashdata('success_change')): ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success_change') ?></div>
+  <?php elseif (session()->getFlashdata('error_change')): ?>
+    <div class="alert alert-danger">
+      <?php
+        $error = session()->getFlashdata('error_change');
+        if (is_array($error)) {
+            foreach ($error as $msg) echo "<li>".esc($msg)."</li>";
+        } else {
+            echo esc($error);
+        }
+      ?>
+    </div>
+  <?php endif; ?>
+
+   <?php if(session()->getFlashdata('error')): ?>
+      <div class="alert alert-danger"><?= esc(session()->getFlashdata('error')) ?></div>
+    <?php endif; ?>
+
+    <?php if(session()->getFlashdata('success')): ?>
+      <div class="alert alert-success"><?= esc(session()->getFlashdata('success')) ?></div>
+    <?php endif; ?>
+
+    <?php if(isset($validation)): ?>
+      <div class="alert alert-warning"><?= $validation->listErrors() ?></div>
+    <?php endif; ?>
+    
   <?php if (session()->get('user_role') === 'admin'): ?>
      <!-- Main Content -->
   <main id="min" class="content container">

@@ -12,7 +12,7 @@ class UserModel extends Model
     protected $useTimestamps = true;
 
     // Only allow these columns to be mass-assigned
-    protected $allowedFields = ['username', 'email', 'password', 'role'];
+    protected $allowedFields = ['name', 'email', 'password', 'role', 'status', 'created_at', 'updated_at'];
 
     // Validate incoming form fields (including non-DB fields)
     protected $validationRules = [

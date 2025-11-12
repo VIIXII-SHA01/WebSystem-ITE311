@@ -8,9 +8,6 @@
   <title>User Management - LMS Admin</title>
 
   <!-- ✅ Correct Bootstrap CSS -->
-  <link rel="stylesheet" href="<?= base_url('css/bootstrap.min.css') ?>">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
   <style>
     body {
       background-color: #181B1F;
@@ -85,15 +82,25 @@
 
   <!-- ✅ Flash Messages -->
   <div class="container mt-3">
-    <?php if (session()->getFlashdata('success')): ?>
-      <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
-    <?php elseif (session()->getFlashdata('error')): ?>
-      <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-    <?php elseif($errors = session()->getFlashdata('errors')): ?>
-    <div class="alert alert-danger"><?= session()->getFlashdata('errors') ?></div>
+
+  <?php if (session()->getFlashdata('success')): ?>
+    <div class="alert alert-success"><?= session()->getFlashdata('success') ?></div>
+
+  <?php elseif (session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+
+  <?php elseif (session()->getFlashdata('validation')): ?>
+    <div class="alert alert-danger">
+      <ul>
+        <?php foreach (session()->getFlashdata('validation') as $error): ?>
+          <li><?= esc($error) ?></li>
+        <?php endforeach; ?>
+      </ul>
     </div>
-    <?php endif; ?>
-  </div>
+  <?php endif; ?>
+
+</div>
+
 
   <!-- ✅ Main Content -->
   <main class="content container-fluid">
@@ -248,8 +255,5 @@
   <footer>
     &copy; <?= date('Y') ?> Learning Management System — Admin Panel
   </footer>
-
-  <!-- ✅ Bootstrap JS Bundle (includes Popper.js) -->
-  <script src="<?= base_url('js/bootstrap.bundle.min.js') ?>"></script>
 </body>
 </html>
