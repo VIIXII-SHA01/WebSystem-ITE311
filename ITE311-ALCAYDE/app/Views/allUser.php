@@ -6,79 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Management - LMS Admin</title>
-
-  <!-- ✅ Correct Bootstrap CSS -->
-  <style>
-    body {
-      background-color: #181B1F;
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .navbar {
-      background-color: #000 !important;
-    }
-
-    .navbar-brand, .nav-link {
-      color: #fff !important;
-    }
-
-    .nav-link:hover {
-      color: #4CAF50 !important;
-    }
-
-    .content {
-      flex: 1;
-      padding: 2rem;
-    }
-
-    .table-dark th {
-      background-color: #212529 !important;
-    }
-
-    .btn-success {
-      background-color: #4CAF50;
-      border: none;
-    }
-
-    .btn-success:hover {
-      background-color: #43a047;
-    }
-
-    .modal-content {
-      background-color: #1f2428;
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-    }
-
-    footer {
-      background-color: #111;
-      color: #bbb;
-      text-align: center;
-      padding: 1rem 0;
-      font-size: 0.9rem;
-    }
-
-    .status-badge {
-      font-size: 0.85rem;
-      padding: 5px 10px;
-      border-radius: 10px;
-    }
-
-    .status-granted {
-      background-color: #198754;
-    }
-
-    .status-restricted {
-      background-color: #dc3545;
-    }
-  </style>
 </head>
-<body>
+<body class="bg-dark">
 
   <!-- ✅ Flash Messages -->
   <div class="container mt-3">
@@ -250,10 +179,5 @@
       </div>
     </div>
   </div>
-
-  <!-- ✅ Footer -->
-  <footer>
-    &copy; <?= date('Y') ?> Learning Management System — Admin Panel
-  </footer>
 </body>
 </html>

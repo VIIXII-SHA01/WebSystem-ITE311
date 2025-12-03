@@ -10,23 +10,14 @@
   rel="stylesheet" 
   integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
   crossorigin="anonymous">
-
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: hsl(219, 12%, 23%, 1.00);
-      }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 
 </head>
-<body>
+<body class="bg-dark">
 
 <div class="container d-flex justify-content-center align-items-center min-vh-100">
-  <div class="card shadow-lg p-4 rounded-4" style="max-width: 420px; width: 100%;">
-    <h2 class="text-center mb-4">Sign Up</h2>
+  <div class="card bg-dark" style="max-width: 420px; width: 100%;">
+    <h2 class="text-center mb-4 text-white">Sign Up</h2>
 
     <!-- Flash & Validation Messages -->
     <?php if(session()->getFlashdata('error')): ?>
@@ -46,53 +37,53 @@
       <?= csrf_field() ?>
 
       <div class="mb-3">
-        <label for="username" class="form-label">Full Name</label>
+        <label for="username" class="form-label text-white">Full Name</label>
         <input 
           type="text" 
           id="username" 
           name="name" 
           value="<?= set_value('name') ?>" 
-          class="form-control" 
+          class="form-control bg-dark text-white" 
           placeholder="John Doe" 
           required>
       </div>
 
       <div class="mb-3">
-        <label for="emailInput" class="form-label">Email Address</label>
+        <label for="emailInput" class="form-label text-white">Email Address</label>
         <input 
           type="email" 
           id="emailInput" 
           name="email" 
           value="<?= set_value('email') ?>" 
-          class="form-control" 
+          class="form-control bg-dark text-white" 
           placeholder="name@example.com" 
           required>
       </div>
 
       <div class="mb-3">
-        <label for="passwordInput" class="form-label">Password</label>
+        <label for="passwordInput" class="form-label text-white">Password</label>
         <input 
           type="password" 
           id="passwordInput" 
           name="password" 
-          class="form-control" 
+          class="form-control bg-dark text-white" 
           placeholder="********" 
           required>
       </div>
 
       <div class="mb-4">
-        <label for="confirmInput" class="form-label">Confirm Password</label>
+        <label for="confirmInput" class="form-label text-white">Confirm Password</label>
         <input 
           type="password" 
           id="confirmInput" 
           name="password_confirm" 
-          class="form-control" 
+          class="form-control bg-dark text-white" 
           placeholder="********" 
           required>
       </div>
 
       <button type="submit" class="btn btn-success w-100 mb-3">Register</button>
-      <p class="text-center mb-0">
+      <p class="text-center mb-0 text-white">
         Already registered? <a href="<?= site_url('login') ?>">Login here</a>
       </p>
     </form>

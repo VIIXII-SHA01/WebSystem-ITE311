@@ -1,0 +1,12 @@
+{
+    "editor.codeActionsOnSave": {
+
+    },
+    "editor.dropIntoEditor.preferences": [
+
+    ],
+    "editor.pasteAs.preferences": [
+
+    ],
+    "php.validate.executablePath": "C:/xampp/php/php.exe"
+}

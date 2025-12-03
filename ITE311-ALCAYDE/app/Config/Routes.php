@@ -32,6 +32,8 @@ $routes->get('users/toggle/(:num)', 'AdminUserController::toggleRestriction/$1')
 $routes->get('restricted/user', 'Home::restricted');
 $routes->set404Override('App\Controllers\Home::notFound');
 $routes->post('users/changePassword', 'ChangePassword::changePassword');
+$routes->get('/forgot', 'Auth::forgot');
+$routes->get('/reset', 'Auth::reset');
 /**
  * Lab 6
  */

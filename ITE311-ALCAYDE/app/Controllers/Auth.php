@@ -423,6 +423,20 @@ class Auth extends Controller
 
     }
 // This is the closing brace for the logout method.
+    public function forgot() {
 
+        if($this->request->is('post')) {
+
+        }
+        return view('auth/forgot_password');
+    }
+
+     public function reset() {
+
+         if($this->request->is('post')) {
+                
+        }
+        return view('auth/reset');
+    }
 }
 // This is the closing brace for the Auth class.

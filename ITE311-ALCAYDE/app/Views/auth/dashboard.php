@@ -6,19 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= esc(session()->get('user_role')) ?> | Dashboard</title>
-
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: hsl(219, 12%, 23%, 1.00);
-      }
-      #min{
-        margin-top: 20px;
-      }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
    <?php if (session()->getFlashdata('success_change')): ?>

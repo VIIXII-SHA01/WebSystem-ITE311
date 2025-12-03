@@ -41,7 +41,7 @@ class CreateEnrollmentsTable extends Migration
             ],
             'Semester' => [
                 'type' => 'ENUM',
-                'constraint' => [1, 2],
+                'constraint' => ['1', '2'],
                 'null' => false,
             ],
             'Year_Level' => [
