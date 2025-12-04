@@ -75,3 +75,13 @@
     .status-restricted {
       background-color: #dc3545;
     }
+    /* Prevent input turning white on autocomplete */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 1000px #212529 inset !important; /* bg-dark color */
+        -webkit-text-fill-color: #fff !important; /* text-white */
+        background-color: #212529 !important;
+        color: #fff !important;
+    }

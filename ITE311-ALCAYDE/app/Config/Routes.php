@@ -39,6 +39,8 @@ $routes->get('/reset', 'Auth::reset');
  */
 $routes->post('/course/enroll', 'Course::enroll');
 $routes->get('/course/enroll', 'Course::studentCourses');
+$routes->post('/get/email', 'Auth::getEmail');
+$routes->post('/get/code', 'Auth::getCode');
 /**
  * for midterm xam
  */

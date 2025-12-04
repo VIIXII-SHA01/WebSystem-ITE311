@@ -9,6 +9,10 @@ use CodeIgniter\Controller;
 
 use Config\Database;
 // This imports the Database configuration class from CodeIgniter, allowing direct database connections.
+require 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Auth extends Controller
 // This defines the Auth class, which extends the base Controller class, making it a controller for handling authentication-related actions like registration, login, etc.
@@ -424,19 +428,86 @@ class Auth extends Controller
     }
 // This is the closing brace for the logout method.
     public function forgot() {
-
-        if($this->request->is('post')) {
-
-        }
         return view('auth/forgot_password');
     }
 
      public function reset() {
-
-         if($this->request->is('post')) {
-                
-        }
         return view('auth/reset');
+    }
+
+    public function getEmail() {
+        helper(['form']);
+        $data = [];
+        $email    = $this->request->getPost('email');
+
+         $rules = [
+                 'email' => [
+                    'label'  => 'Email Address',
+                    'rules'  => 'required|valid_email|regex_match[/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/]',
+                    'errors' => [
+                        'regex_match' => 'The {field} format is invalid.',
+                        'is_unique'   => 'That email is already taken.'
+                    ]
+                ],
+         ];
+
+          if (! $this->validate($rules)) {
+                $data['validation'] = $this->validator;
+                return view('auth/register', $data);
+         }
+
+         $db = Database::connect();
+         $user = $db->table('users')->where('email', $email)->get()->getRow();
+
+         if (! $user) {
+            $session = session();
+            $session->setFlashdata('error', 'Email not found.');
+            return redirect()->back()->withInput();
+        }
+
+         $otp = mt_rand(100000, 999999);
+
+        $db->table('verifications')->where('email', $email)->delete();
+        $db->table('verifications')->insert([
+            'email' => $email,
+            'otp'   => $otp,
+            'expires_at' => date('Y-m-d H:i:s', strtotime('+10 minutes'))
+        ]);
+
+        $mail = new PHPMailer(true);
+
+         try {
+            $mail->isSMTP();
+            $mail->Host       = 'smtp.gmail.com';
+            $mail->SMTPAuth   = true;
+            $mail->Username   = 'YOUR_EMAIL@gmail.com';
+            $mail->Password   = 'YOUR_APP_PASSWORD';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port       = 587;
+
+            $mail->setFrom('YOUR_EMAIL@gmail.com', 'Your App Name');
+            $mail->addAddress($email);
+
+            $mail->Subject = 'Your Password Reset Code';
+            $mail->Body    = "Your OTP code is: <b>$otp</b>";
+
+            $mail->isHTML(true);
+            $mail->send();
+
+        } catch (Exception $e) {
+            $this->session->setFlashdata('error', 'Could not send email.');
+            return redirect()->back();
+        }
+
+        $this->session->set('reset_email', $email);
+
+        return redirect()->to('/verify-code');
+
+
+    }
+
+    public function getCode() {
+        
     }
 }
 // This is the closing brace for the Auth class.

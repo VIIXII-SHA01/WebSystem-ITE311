@@ -10,6 +10,17 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
     crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
+     <style>
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      input:-webkit-autofill:active {
+          -webkit-box-shadow: 0 0 0 1000px #212529 inset !important; /* bg-dark color */
+          -webkit-text-fill-color: #fff !important; /* text-white */
+          background-color: #212529 !important;
+          color: #fff !important;
+      }
+  </style>
 </head>
 
 <body class="bg-dark">
