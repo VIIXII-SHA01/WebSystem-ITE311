@@ -1,0 +1,260 @@
+CRITICAL - 2025-12-08 12:45:45 --> Error: Class "Locale" not found
+[Method: GET, Route: /]
+in SYSTEMPATH\CodeIgniter.php on line 189.
+ 1 SYSTEMPATH\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+ 2 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+ 3 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 12:45:46 --> ErrorException: Uncaught Error: Class "Locale" not found in C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php:142
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php(60): format_number(4.0, 2, NULL, Array)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(154): number_to_size(4.0, 2)
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\app\Views\errors\html\error_exception.php(408): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(4194304)
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(266): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(269): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\ExceptionHandler.php(116): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\Exceptions.php(162): CodeIgniter\Debug\ExceptionHandler->handle(Object(Error), Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), 500, 1)
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(Error))
+#8 {main}
+  thrown
+【Previous Exception】
+Error
+Class "Locale" not found
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#3 {main}
+[Method: GET, Route: /]
+in SYSTEMPATH\Helpers\number_helper.php on line 142.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 12:45:55 --> Error: Class "Locale" not found
+[Method: GET, Route: /]
+in SYSTEMPATH\CodeIgniter.php on line 189.
+ 1 SYSTEMPATH\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+ 2 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+ 3 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 12:45:55 --> ErrorException: Uncaught Error: Class "Locale" not found in C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php:142
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php(60): format_number(4.0, 2, NULL, Array)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(154): number_to_size(4.0, 2)
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\app\Views\errors\html\error_exception.php(408): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(4194304)
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(266): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(269): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\ExceptionHandler.php(116): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\Exceptions.php(162): CodeIgniter\Debug\ExceptionHandler->handle(Object(Error), Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), 500, 1)
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(Error))
+#8 {main}
+  thrown
+【Previous Exception】
+Error
+Class "Locale" not found
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#3 {main}
+[Method: GET, Route: /]
+in SYSTEMPATH\Helpers\number_helper.php on line 142.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 12:46:26 --> Error: Class "Locale" not found
+[Method: GET, Route: /]
+in SYSTEMPATH\CodeIgniter.php on line 189.
+ 1 SYSTEMPATH\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+ 2 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+ 3 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 12:46:26 --> ErrorException: Uncaught Error: Class "Locale" not found in C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php:142
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php(60): format_number(4.0, 2, NULL, Array)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(154): number_to_size(4.0, 2)
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\app\Views\errors\html\error_exception.php(408): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(4194304)
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(266): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(269): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\ExceptionHandler.php(116): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\Exceptions.php(162): CodeIgniter\Debug\ExceptionHandler->handle(Object(Error), Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), 500, 1)
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(Error))
+#8 {main}
+  thrown
+【Previous Exception】
+Error
+Class "Locale" not found
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#3 {main}
+[Method: GET, Route: /]
+in SYSTEMPATH\Helpers\number_helper.php on line 142.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 12:46:33 --> Error: Class "Locale" not found
+[Method: GET, Route: login]
+in SYSTEMPATH\CodeIgniter.php on line 189.
+ 1 SYSTEMPATH\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+ 2 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+ 3 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 12:46:33 --> ErrorException: Uncaught Error: Class "Locale" not found in C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php:142
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php(60): format_number(4.0, 2, NULL, Array)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(154): number_to_size(4.0, 2)
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\app\Views\errors\html\error_exception.php(408): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(4194304)
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(266): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(269): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\ExceptionHandler.php(116): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\Exceptions.php(162): CodeIgniter\Debug\ExceptionHandler->handle(Object(Error), Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), 500, 1)
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(Error))
+#8 {main}
+  thrown
+【Previous Exception】
+Error
+Class "Locale" not found
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#3 {main}
+[Method: GET, Route: login]
+in SYSTEMPATH\Helpers\number_helper.php on line 142.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2025-12-08 12:46:36 --> Error: Class "Locale" not found
+[Method: GET, Route: login]
+in SYSTEMPATH\CodeIgniter.php on line 189.
+ 1 SYSTEMPATH\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+ 2 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+ 3 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 12:46:36 --> ErrorException: Uncaught Error: Class "Locale" not found in C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php:142
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Helpers\number_helper.php(60): format_number(4.0, 2, NULL, Array)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(154): number_to_size(4.0, 2)
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\app\Views\errors\html\error_exception.php(408): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(4194304)
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(266): include('C:\\xampp\\htdocs...')
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\BaseExceptionHandler.php(269): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\ExceptionHandler.php(116): CodeIgniter\Debug\BaseExceptionHandler->render(Object(Error), 500, 'C:\\xampp\\htdocs...')
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\Debug\Exceptions.php(162): CodeIgniter\Debug\ExceptionHandler->handle(Object(Error), Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), 500, 1)
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(Error))
+#8 {main}
+  thrown
+【Previous Exception】
+Error
+Class "Locale" not found
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(350): CodeIgniter\CodeIgniter->initialize()
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(67): CodeIgniter\Boot::initializeCodeIgniter()
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#3 {main}
+[Method: GET, Route: login]
+in SYSTEMPATH\Helpers\number_helper.php on line 142.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+DEBUG - 2025-12-08 11:49:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:50:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:52:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:53:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:56:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:56:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:56:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:56:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:57:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 11:57:03 --> CSRF token verified.
+DEBUG - 2025-12-08 11:57:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 11:57:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 11:57:26 --> CSRF token verified.
+DEBUG - 2025-12-08 11:57:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-08 11:59:53 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: get/email]
+in SYSTEMPATH\Security\Security.php on line 262.
+ 1 SYSTEMPATH\Security\Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH\Filters\CSRF.php(52): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH\Filters\Filters.php(241): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH\Filters\Filters.php(221): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH\CodeIgniter.php(479): CodeIgniter\Filters\Filters->run('get/email', 'before')
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-08 11:59:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 12:00:00 --> CSRF token verified.
+DEBUG - 2025-12-08 12:00:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 12:14:03 --> CSRF token verified.
+DEBUG - 2025-12-08 12:14:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-08 12:17:36 --> CodeIgniter\Security\Exceptions\SecurityException: The action you requested is not allowed.
+[Method: POST, Route: get/email]
+in SYSTEMPATH\Security\Security.php on line 262.
+ 1 SYSTEMPATH\Security\Security.php(262): CodeIgniter\Security\Exceptions\SecurityException::forDisallowedAction()
+ 2 SYSTEMPATH\Filters\CSRF.php(52): CodeIgniter\Security\Security->verify(Object(CodeIgniter\HTTP\IncomingRequest))
+ 3 SYSTEMPATH\Filters\Filters.php(241): CodeIgniter\Filters\CSRF->before(Object(CodeIgniter\HTTP\IncomingRequest), null)
+ 4 SYSTEMPATH\Filters\Filters.php(221): CodeIgniter\Filters\Filters->runBefore([...])
+ 5 SYSTEMPATH\CodeIgniter.php(479): CodeIgniter\Filters\Filters->run('get/email', 'before')
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-08 12:17:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 12:17:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 12:17:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 12:17:51 --> CSRF token verified.
+DEBUG - 2025-12-08 12:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 12:23:51 --> CSRF token verified.
+DEBUG - 2025-12-08 12:23:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 12:27:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 12:27:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 12:27:37 --> CSRF token verified.
+DEBUG - 2025-12-08 12:27:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 12:27:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 12:30:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-08 12:30:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-08 12:30:12 --> CSRF token verified.
+ERROR - 2025-12-08 12:30:12 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php(327): mysqli->query('DELETE FROM `ve...', 0)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `ve...')
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `ve...')
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `ve...', Array, false)
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\app\Controllers\Auth.php(469): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(933): App\Controllers\Auth->getEmail()
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-12-08 12:30:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'email' in 'where clause'
+[Method: POST, Route: get/email]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `verifications`
+WHERE `email` = :email:', [...], false)
+ 2 APPPATH\Controllers\Auth.php(469): CodeIgniter\Database\BaseBuilder->delete()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getEmail()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 12:30:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `verifications`
+WHERE `email` = \'keithyvheaiv@gmail.com\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `verifications`
+WHERE `email` = \'keithyvheaiv@gmail.com\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `verifications`
+WHERE `email` = :email:', [...], false)
+ 4 APPPATH\Controllers\Auth.php(469): CodeIgniter\Database\BaseBuilder->delete()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getEmail()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-08 12:30:12 --> [Caused by] mysqli_sql_exception: Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('DELETE FROM `verifications`
+WHERE `email` = \'keithyvheaiv@gmail.com\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `verifications`
+WHERE `email` = \'keithyvheaiv@gmail.com\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `verifications`
+WHERE `email` = \'keithyvheaiv@gmail.com\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2848): CodeIgniter\Database\BaseConnection->query('DELETE FROM `verifications`
+WHERE `email` = :email:', [...], false)
+ 5 APPPATH\Controllers\Auth.php(469): CodeIgniter\Database\BaseBuilder->delete()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getEmail()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

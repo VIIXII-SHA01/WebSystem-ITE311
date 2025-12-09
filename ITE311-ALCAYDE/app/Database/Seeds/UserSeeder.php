@@ -37,6 +37,15 @@ class UserSeeder extends Seeder
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
+              [
+                'name'       => 'Kim Fernando',
+                'email'      => 'keithyvheaiv@gmail.com',
+                'password'   => password_hash('vea123', PASSWORD_DEFAULT),
+                'role'       => 'admin',
+                'status'     => 'granted',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
         ];
 
         // Insert data into the 'users' table

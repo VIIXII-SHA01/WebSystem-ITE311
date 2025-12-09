@@ -1,0 +1,266 @@
+DEBUG - 2025-12-09 02:42:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 02:43:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 02:43:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 02:43:10 --> CSRF token verified.
+CRITICAL - 2025-12-09 02:43:10 --> Error: Class "PHPMailer\PHPMailer\PHPMailer" not found
+[Method: POST, Route: get/email]
+in APPPATH\Controllers\Auth.php on line 476.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getEmail()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-09 02:54:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 02:54:38 --> CSRF token verified.
+CRITICAL - 2025-12-09 02:54:41 --> ErrorException: Undefined property: App\Controllers\Auth::$session
+[Method: POST, Route: get/email]
+in APPPATH\Controllers\Auth.php on line 497.
+ 1 APPPATH\Controllers\Auth.php(497): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Auth::$session', 'C:\\xampp\\htdocs\\ITE311-ALCAYDE\\app\\Controllers\\Auth.php', 497)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getEmail()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-09 02:58:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 02:58:56 --> CSRF token verified.
+DEBUG - 2025-12-09 02:58:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-09 02:59:01 --> ErrorException: Undefined property: App\Controllers\Auth::$session
+[Method: POST, Route: get/email]
+in APPPATH\Controllers\Auth.php on line 502.
+ 1 APPPATH\Controllers\Auth.php(502): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Auth::$session', 'C:\\xampp\\htdocs\\ITE311-ALCAYDE\\app\\Controllers\\Auth.php', 502)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getEmail()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-12-09 03:09:13 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UNSIGNED NOT NULL,
+	`verification_code` INT(11) UNSIGNED NOT NULL,
+	`created_...' at line 3 in C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `v...', 0)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `v...')
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `v...')
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `v...')
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\app\Database\Migrations\2025-12-09-030741_CreateVerificationTable.php(39): CodeIgniter\Database\Forge->createTable('verifications')
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateVerificationTable->up()
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\ITE311-ALCAYDE\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\ITE311-ALCAYDE\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\ITE311-ALCAYDE\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\ITE311-ALCAYDE\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-12-09 03:09:33 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UNSIGNED NOT NULL,
+	`verification_code` INT(11) NOT NULL,
+	`created_at` DATET...' at line 3 in C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `v...', 0)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `v...')
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `v...')
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `v...')
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\app\Database\Migrations\2025-12-09-030741_CreateVerificationTable.php(38): CodeIgniter\Database\Forge->createTable('verifications')
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateVerificationTable->up()
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\ITE311-ALCAYDE\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\ITE311-ALCAYDE\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\ITE311-ALCAYDE\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\ITE311-ALCAYDE\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-12-09 03:11:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:11:28 --> CSRF token verified.
+DEBUG - 2025-12-09 03:11:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:11:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:13:46 --> CSRF token verified.
+DEBUG - 2025-12-09 03:13:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:14:20 --> CSRF token verified.
+DEBUG - 2025-12-09 03:14:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:14:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:33:09 --> CSRF token verified.
+DEBUG - 2025-12-09 03:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:33:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:33:31 --> CSRF token verified.
+DEBUG - 2025-12-09 03:33:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-09 03:33:32 --> mysqli_sql_exception: Table 'lms_alcayde.verification' doesn't exist in C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\app\Controllers\Auth.php(535): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(933): App\Controllers\Auth->getCode()
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#7 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-12-09 03:33:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'lms_alcayde.verification' doesn't exist
+[Method: POST, Route: get/code]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `verification`
+WHERE `verification_code` = :verification_code:', [...], false)
+ 2 APPPATH\Controllers\Auth.php(535): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getCode()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-09 03:33:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'lms_alcayde.verification' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `verification`
+WHERE `verification_code` = \'355066\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `verification`
+WHERE `verification_code` = \'355066\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `verification`
+WHERE `verification_code` = :verification_code:', [...], false)
+ 4 APPPATH\Controllers\Auth.php(535): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getCode()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-09 03:33:32 --> [Caused by] mysqli_sql_exception: Table 'lms_alcayde.verification' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `verification`
+WHERE `verification_code` = \'355066\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `verification`
+WHERE `verification_code` = \'355066\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `verification`
+WHERE `verification_code` = \'355066\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `verification`
+WHERE `verification_code` = :verification_code:', [...], false)
+ 5 APPPATH\Controllers\Auth.php(535): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->getCode()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-09 03:34:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:35:07 --> CSRF token verified.
+DEBUG - 2025-12-09 03:35:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:35:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:35:33 --> CSRF token verified.
+DEBUG - 2025-12-09 03:35:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:35:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:41:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:41:36 --> CSRF token verified.
+DEBUG - 2025-12-09 03:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:41:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:42:06 --> CSRF token verified.
+DEBUG - 2025-12-09 03:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:42:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:42:31 --> CSRF token verified.
+DEBUG - 2025-12-09 03:42:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:42:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:42:51 --> CSRF token verified.
+DEBUG - 2025-12-09 03:42:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:42:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 03:43:04 --> CSRF token verified.
+DEBUG - 2025-12-09 03:43:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:43:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 03:45:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:22:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:22:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 04:23:09 --> CSRF token verified.
+DEBUG - 2025-12-09 04:23:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-09 04:23:09 --> Error: Class "App\Controllers\Database" not found
+[Method: POST, Route: users/add]
+in APPPATH\Controllers\AdminUserController.php on line 213.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminUserController->addUser()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminUserController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-09 04:23:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:24:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 04:24:41 --> CSRF token verified.
+DEBUG - 2025-12-09 04:24:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-09 04:24:41 --> mysqli_sql_exception: Unknown column 'validation_link' in 'field list' in C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `ve...', 0)
+#1 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ve...')
+#2 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ve...')
+#3 C:\xampp\htdocs\ITE311-ALCAYDE\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ve...', Array, false)
+#4 C:\xampp\htdocs\ITE311-ALCAYDE\app\Controllers\AdminUserController.php(221): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(933): App\Controllers\AdminUserController->addUser()
+#6 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminUserController))
+#7 C:\xampp\htdocs\ITE311-ALCAYDE\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\ITE311-ALCAYDE\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\ITE311-ALCAYDE\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-12-09 04:24:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'validation_link' in 'field list'
+[Method: POST, Route: users/add]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (:email:, :validation_link:, :created_at:, :status:)', [...], false)
+ 2 APPPATH\Controllers\AdminUserController.php(221): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminUserController->addUser()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminUserController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-09 04:24:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'validation_link' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (\'johnlloydalcayde870@gmail.com\', \'http://localhost/ITE311-ALCAYDE/verify_account/6\', \'2025-12-09 04:24:41\', \'unused\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (\'johnlloydalcayde870@gmail.com\', \'http://localhost/ITE311-ALCAYDE/verify_account/6\', \'2025-12-09 04:24:41\', \'unused\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (:email:, :validation_link:, :created_at:, :status:)', [...], false)
+ 4 APPPATH\Controllers\AdminUserController.php(221): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminUserController->addUser()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminUserController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-09 04:24:41 --> [Caused by] mysqli_sql_exception: Unknown column 'validation_link' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (\'johnlloydalcayde870@gmail.com\', \'http://localhost/ITE311-ALCAYDE/verify_account/6\', \'2025-12-09 04:24:41\', \'unused\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (\'johnlloydalcayde870@gmail.com\', \'http://localhost/ITE311-ALCAYDE/verify_account/6\', \'2025-12-09 04:24:41\', \'unused\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (\'johnlloydalcayde870@gmail.com\', \'http://localhost/ITE311-ALCAYDE/verify_account/6\', \'2025-12-09 04:24:41\', \'unused\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `verifications` (`email`, `validation_link`, `created_at`, `status`) VALUES (:email:, :validation_link:, :created_at:, :status:)', [...], false)
+ 5 APPPATH\Controllers\AdminUserController.php(221): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminUserController->addUser()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminUserController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(60): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-09 04:25:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:25:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 04:25:55 --> CSRF token verified.
+DEBUG - 2025-12-09 04:25:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:25:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:26:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:27:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:27:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:27:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 04:28:06 --> CSRF token verified.
+DEBUG - 2025-12-09 04:28:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-09 04:32:52 --> CSRF token verified.
+DEBUG - 2025-12-09 04:32:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:32:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:33:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:33:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:33:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-09 04:33:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

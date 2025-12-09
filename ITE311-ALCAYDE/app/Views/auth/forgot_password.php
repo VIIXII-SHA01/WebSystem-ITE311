@@ -51,15 +51,15 @@
 
     <div class="row g-2">
         <div class="col-8">
-            <input 
-                type="text"
-                id="emailInput"
-                name="email"
-                class="form-control bg-dark text-white"
-                placeholder="name@example.com"
-                pattern="[A-Za-z0-9@]+"
-                title="Only letters, numbers, and @ symbol are allowed."
-                required>
+         <input type="text"
+          id="emailInput"
+          name="email"
+          class="form-control bg-dark text-white"
+          placeholder="name@example.com"
+          pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"
+          title="Enter a valid email address."
+          required>
+
             </div>
             <div class="col-4">
                 <button type="submit" class="btn btn-success w-100">
@@ -68,6 +68,7 @@
             </div>
         </div>
     </div>
+    </form>
 
      <form action="<?= site_url('get/code') ?>" method="post">
       <?= csrf_field() ?>
@@ -77,10 +78,9 @@
         <input 
           type="number" 
           id="emailInput" 
-          name="email" 
+          name="code" 
           class="form-control bg-dark text-white" 
-          placeholder="name@example.com" 
-          required>
+          placeholder="e.g 564312">
       </div>
 
       <button type="submit" class="btn btn-success w-100 mb-3">Verify</button>

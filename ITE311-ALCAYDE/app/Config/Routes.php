@@ -41,6 +41,8 @@ $routes->post('/course/enroll', 'Course::enroll');
 $routes->get('/course/enroll', 'Course::studentCourses');
 $routes->post('/get/email', 'Auth::getEmail');
 $routes->post('/get/code', 'Auth::getCode');
+$routes->post('/password/update', 'Auth::changePassword');
+$routes->get('/verify_account/(:num)', 'AdminUserController::verifyAccount/$1');
 /**
  * for midterm xam
  */

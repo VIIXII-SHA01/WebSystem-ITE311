@@ -9,6 +9,11 @@ use App\Models\UserModel;
 
 use CodeIgniter\Controller;
 // This imports the base Controller class from CodeIgniter, which this class extends to inherit controller functionality.
+require 'vendor/autoload.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Config\Database;
 
 class AdminUserController extends Controller
 // This defines the AdminUserController class, which extends the base Controller class, making it a controller for handling admin user-related actions.
@@ -175,6 +180,8 @@ class AdminUserController extends Controller
                     'role' => $this->request->getPost('role'), // Get the role from the form
                     // This retrieves the 'role' from the POST data.
 
+                    'status' => 'restricted', // Set initial status to 'restricted'),
+
                     'password' => password_hash($defaultPassword, PASSWORD_DEFAULT), // Hash the password
                     // This hashes the default password using PHP's password_hash function.
 
@@ -199,8 +206,51 @@ class AdminUserController extends Controller
                 if($insertBatch) {
                 // This checks if the insertion was successful.
 
-                   session()->setFlashdata('success', 'New User Added Successfully!');
+                   session()->setFlashdata('success', 'New User Invited Successfully!');
                    // This sets a success flash message in the session.
+
+                   $email = $this->request->getPost('email');
+
+                     $db = Database::connect();
+                     $user = $db->table('users')->where('email', $email)->get()->getRow();
+                     $user_id = $user->id;  
+
+                     $link = 'http://localhost/ITE311-ALCAYDE/verify_account/'.$user_id;
+
+                    $db->table('validations')
+                    ->where('created_at <', date('Y-m-d H:i:s', strtotime('-3 minutes')))
+                    ->delete();
+                      $db->table('validations')->insert([
+                    'email' => $email,
+                    'validation_link'   => $link,
+                    'created_at' =>  date('Y-m-d H:i:s'),
+                    'status' => 'unused',
+                ]);
+
+                   $mail = new PHPMailer(true);
+
+                        try {
+                            $mail->isSMTP();
+                            $mail->Host       = 'smtp.gmail.com';
+                            $mail->SMTPAuth   = true;
+                            $mail->Username   = 'marketingj786@gmail.com';
+                            $mail->Password   = 'orxk bcjn eqdf nzsb';
+                            $mail->SMTPSecure = 'tls';
+                            $mail->Port       = 587;
+
+                            $mail->setFrom('marketingj786@gmail.com', 'LMS Verification');
+                            $mail->addAddress($email);
+
+                            $mail->Subject = 'Your invited to LMS please verify your account';
+                            $mail->Body    = "Please Click this link to verify your account: <b>$link</b>";
+
+                            $mail->isHTML(true);
+                            $mail->send();
+
+                        } catch (Exception $e) {
+                            $session->setFlashdata('error', 'Could not send email.');
+                            return redirect()->back();
+                        }
 
                    return redirect()->to(base_url('users')); // Redirect to user management
                    // This redirects to the users page.
@@ -307,7 +357,7 @@ class AdminUserController extends Controller
         }
         // Closes if.
 
-         $password = "password123";
+         $password = "lms_2025";
          // This sets a hardcoded password (note: this seems insecure).
 
         if (!$this->validate($validationRules)) {
@@ -382,6 +432,22 @@ class AdminUserController extends Controller
         return redirect()->to(base_url('users'))->with('success', $msg);
         // Redirects to users page with the appropriate success message.
 
+    }
+
+    public function verifyAccount($id)
+    {
+        $db = Database::connect();
+        $user = $db->table('users')->where('id', $id)->update(['status' => 'granted']);
+
+
+        if (!$user) {
+            return redirect()->to(base_url('login'))->with('error', 'Invalid verification link.');
+        }
+
+        // Update user status to 'granted' upon verification
+        $this->userModel->update($id, ['status' => 'granted']);
+
+        return redirect()->to(base_url('login'))->with('success', 'Account verified successfully! You can now log in.');
     }
     // This is the closing brace for the toggleRestriction method.
 

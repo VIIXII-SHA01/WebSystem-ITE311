@@ -152,7 +152,7 @@ class Auth extends Controller
                 'role'       => $role,
 // This sets the role to the default 'student'.
 
-                'status'     => 'granted',
+                'status'     => 'restricted',
 // This sets the initial status to 'granted'.
 
                 'created_at' => date('Y-m-d H:i:s'),
@@ -436,6 +436,13 @@ class Auth extends Controller
     }
 
     public function getEmail() {
+        $db = Database::connect();
+
+        // Delete verification records older than 3 minutes
+        $db->table('verifications')
+        ->where('created_at <', date('Y-m-d H:i:s', strtotime('-3 minutes')))
+        ->delete();
+        $session = session();
         helper(['form']);
         $data = [];
         $email    = $this->request->getPost('email');
@@ -446,14 +453,13 @@ class Auth extends Controller
                     'rules'  => 'required|valid_email|regex_match[/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/]',
                     'errors' => [
                         'regex_match' => 'The {field} format is invalid.',
-                        'is_unique'   => 'That email is already taken.'
                     ]
                 ],
          ];
 
           if (! $this->validate($rules)) {
                 $data['validation'] = $this->validator;
-                return view('auth/register', $data);
+                return view('auth/forgot_password', $data);
          }
 
          $db = Database::connect();
@@ -470,8 +476,9 @@ class Auth extends Controller
         $db->table('verifications')->where('email', $email)->delete();
         $db->table('verifications')->insert([
             'email' => $email,
-            'otp'   => $otp,
-            'expires_at' => date('Y-m-d H:i:s', strtotime('+10 minutes'))
+            'verification_code'   => $otp,
+            'created_at' =>  date('Y-m-d H:i:s'),
+            'status' => 'unused',
         ]);
 
         $mail = new PHPMailer(true);
@@ -480,12 +487,12 @@ class Auth extends Controller
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'YOUR_EMAIL@gmail.com';
-            $mail->Password   = 'YOUR_APP_PASSWORD';
+            $mail->Username   = 'marketingj786@gmail.com';
+            $mail->Password   = 'orxk bcjn eqdf nzsb';
             $mail->SMTPSecure = 'tls';
             $mail->Port       = 587;
 
-            $mail->setFrom('YOUR_EMAIL@gmail.com', 'Your App Name');
+            $mail->setFrom('marketingj786@gmail.com', 'LMS Verification');
             $mail->addAddress($email);
 
             $mail->Subject = 'Your Password Reset Code';
@@ -495,19 +502,91 @@ class Auth extends Controller
             $mail->send();
 
         } catch (Exception $e) {
-            $this->session->setFlashdata('error', 'Could not send email.');
+            $session->setFlashdata('error', 'Could not send email.');
             return redirect()->back();
         }
 
-        $this->session->set('reset_email', $email);
+        $session->set('reset_email', $email);
 
-        return redirect()->to('/verify-code');
-
-
+        return redirect()->to('/forgot')->with('success', 'Verification code sent to your email.');
     }
 
     public function getCode() {
-        
+        $session = session();
+        helper(['form']);
+        $data = [];
+        $code    = $this->request->getPost('code');
+        $rules = [
+        'code' => [
+                'label'  => 'Code',
+                'rules'  => 'required|numeric',
+                'errors' => [
+                'numeric' => 'The {field} must contain only numbers.',
+                ]
+        ],
+        ];
+
+        if (! $this->validate($rules)) {
+                $data['validation'] = $this->validator;
+                return view('auth/forgot_password', $data);
+         }
+
+         $db = Database::connect();
+         $user = $db->table('verifications')->where('verification_code', $code)->get()->getRow();
+         
+         if (! $user) {
+             $session = session();
+             $session->setFlashdata('error', 'Invalid code.');
+             return redirect()->back()->withInput();
+        }
+
+        if ($user->status === 'used') {
+            $session = session();
+            $session->setFlashdata('error', 'This code has already been used.');
+            return redirect()->back()->withInput();
+        }
+        $db->table('verifications')->where('verification_code', $code)->update([
+            'status' => 'used',
+        ]);
+        return redirect()->to('/reset')->with('success', 'Code verified. You can now reset your password.');
     }
+
+    public function changePassword() {
+        helper(['form']);
+        $data = [];
+
+        $this->request->getPost('password');
+        $this->request->getPost('confirm_password');
+        $rules = [
+            'password' => [
+                'label'  => 'New Password',
+                'rules'  => 'required|min_length[8]|max_length[255]|regex_match[/^(?!.*[\*"]).+$/]',
+                'errors' => [
+                    'regex_match' => 'The {field} cannot contain * or ".'
+                ]
+            ],
+            'confirm_password' => 'matches[password]'
+        ];
+
+        if (! $this->validate($rules)) {
+            $data['validation'] = $this->validator;
+            return view('auth/reset', $data);
+        }
+
+        $newPassword = $this->request->getPost('password');
+        $email = session()->get('reset_email');
+
+        $db = Database::connect();
+        $db->table('users')->where('email', $email)->update([
+            'password' => password_hash($newPassword, PASSWORD_DEFAULT),
+            'updated_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        session()->remove('reset_email');
+        session()->setFlashdata('success', 'Password updated successfully! Please log in.');
+
+        return redirect()->to(base_url('login'));
+
+        }
 }
 // This is the closing brace for the Auth class.
