@@ -19,7 +19,7 @@ class courseModel extends Model
     protected $primaryKey = 'id';
 // This specifies the primary key column for the table as 'id'.
 
-    protected $allowedFields = ['course_name', 'course_instructor'];
+    protected $allowedFields = ['course_name', 'course_instructor', 'course_code'];
 // This defines the fields that are allowed to be inserted or updated in the table, for security purposes.
 
     /**

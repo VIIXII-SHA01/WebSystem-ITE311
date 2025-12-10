@@ -19,7 +19,8 @@ class EnrollmentModel extends Model
     protected $primaryKey = 'id';
 // This specifies the primary key column for the table as 'id'.
 
-    protected $allowedFields = ['user_id', 'course_id', 'enrolled_date'];
+    protected $allowedFields = ['user_id', 'course_id', 'enrolled_date', 'academic_year', 
+                                'Control_Number', 'Semester', 'term', 'Year_Level', 'enrollment_status'];
 // This defines the fields that are allowed to be inserted or updated in the table, for security purposes.
 
     protected $useTimestamps = false; // We are handling enrolled_date manually

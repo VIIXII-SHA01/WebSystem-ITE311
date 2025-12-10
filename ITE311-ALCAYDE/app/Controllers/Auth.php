@@ -523,7 +523,7 @@ class Auth extends Controller
                 'errors' => [
                 'numeric' => 'The {field} must contain only numbers.',
                 ]
-        ],
+            ],
         ];
 
         if (! $this->validate($rules)) {

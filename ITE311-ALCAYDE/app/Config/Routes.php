@@ -43,6 +43,10 @@ $routes->post('/get/email', 'Auth::getEmail');
 $routes->post('/get/code', 'Auth::getCode');
 $routes->post('/password/update', 'Auth::changePassword');
 $routes->get('/verify_account/(:num)', 'AdminUserController::verifyAccount/$1');
+$routes->get('/course/admin', 'Home::courseAdmin');
+$routes->post('/course/add/', 'Home::addCourse');
+$routes->get('/course/add/', 'Home::addCourse');
+$routes->get('/admin/enrollments', 'Home::adminEnroll');
 /**
  * for midterm xam
  */

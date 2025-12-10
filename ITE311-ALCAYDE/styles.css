@@ -85,3 +85,32 @@
         background-color: #212529 !important;
         color: #fff !important;
     }
+    #min {
+            margin-top: 20px;
+    }
+
+    /* Fixed alert container */
+    #alert-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+            width: auto;
+    }
+    #alert-container .alert {
+            pointer-events: auto;
+            min-width: 300px;
+            margin-bottom: 10px;
+    }
+    nav{
+      background-color:rgba(61, 197, 34, 0.9) !important;
+    }
+    .nav-item{
+       color: white;
+    }
+    .nav-item{
+      list-style: none;
+    }
+    #navMain{
+      border-bottom: 0.8px solid white;
+    }
