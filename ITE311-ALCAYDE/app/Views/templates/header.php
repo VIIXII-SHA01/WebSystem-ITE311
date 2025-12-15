@@ -191,6 +191,12 @@
                 Manage Courses
               </a>
             </li>
+             <li class="nav-item">
+            <a class="navbar-brand fw-bold text-white" href="<?= base_url('/admin/upload') ?>">
+              <i class="bi bi-cloud-upload"></i>
+              Upload Materials
+            </a>
+          </li>
             <li class="nav-item">
               <a class="navbar-brand fw-bold text-white" href="<?= base_url('admin/enrollments') ?>">
                 <i class="bi bi-clipboard-check"></i>
@@ -201,21 +207,26 @@
 
           <!-- Teacher Links -->
           <?php if (session()->get('user_role') === 'teacher'): ?>
-            <li class="nav-item">
-              <a class="navbar-brand fw-bold text-white" href="#">
-                <i class="bi bi-journal-text"></i>
-                My Classes
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="navbar-brand fw-bold text-white" href="#">
-                <i class="bi bi-plus-circle"></i>
-                Create Course
-              </a>
-            </li>
-          <?php endif; ?>
-
-          <!-- Student Links -->
+          <li class="nav-item">
+            <a class="navbar-brand fw-bold text-white" href="<?= base_url('/teacher/classes') ?>">
+              <i class="bi bi-journal-text"></i>
+              My Classes
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand fw-bold text-white" href="<?= base_url('/teacher/addCourse') ?>">
+              <i class="bi bi-plus-circle"></i>
+              Create Course
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand fw-bold text-white" href="<?= base_url('/teacher/course') ?>">
+              <i class="bi bi-cloud-upload"></i>
+              Upload Materials
+            </a>
+          </li>
+        <?php endif; ?>
+                  <!-- Student Links -->
           <?php if (session()->get('user_role') === 'student'): ?>
             <li class="nav-item">
               <a class="navbar-brand fw-bold text-white" href="<?= base_url('/course/enroll') ?>">

@@ -19,7 +19,8 @@ class courseModel extends Model
     protected $primaryKey = 'id';
 // This specifies the primary key column for the table as 'id'.
 
-    protected $allowedFields = ['course_name', 'course_instructor', 'course_code'];
+    protected $allowedFields = ['course_name', 'course_instructor', 'course_code', 'course_description',
+        'credits'];
 // This defines the fields that are allowed to be inserted or updated in the table, for security purposes.
 
     /**
@@ -37,6 +38,15 @@ class courseModel extends Model
 // This calls the findAll method from the base Model class to retrieve all records from the 'courses' table and returns them as an array.
 
     }
+
+public function getCoursesByTeacher($teacherId)
+{
+    return $this->where('course_instructor', $teacherId)
+                ->orderBy('course_name', 'ASC')
+                ->findAll();
+}
+
+
 // This is the closing brace for the getAllCourses method.
 
 }

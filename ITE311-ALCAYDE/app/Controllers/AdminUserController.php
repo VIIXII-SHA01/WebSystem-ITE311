@@ -450,6 +450,5 @@ class AdminUserController extends Controller
         return redirect()->to(base_url('login'))->with('success', 'Account verified successfully! You can now log in.');
     }
     // This is the closing brace for the toggleRestriction method.
-
 }
 // This is the closing brace for the AdminUserController class.

@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Course Management - LMS Admin</title>
-<link rel="stylesheet" href="<?= base_url('styles.css') ?>">
 <style>
   body {
     background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
@@ -26,6 +25,7 @@
     right: -250px;
     animation: pulse 10s ease-in-out infinite;
     pointer-events: none;
+    z-index: 0;
   }
 
   body::after {
@@ -40,6 +40,7 @@
     animation: pulse 8s ease-in-out infinite;
     animation-delay: 2s;
     pointer-events: none;
+    z-index: 0;
   }
 
   @keyframes pulse {
@@ -64,6 +65,8 @@
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     animation: slideInRight 0.5s ease;
+    position: relative;
+    z-index: 1071;
   }
 
   @keyframes slideInRight {
@@ -178,12 +181,23 @@
     box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
   }
 
+  .modal-backdrop {
+    z-index: 9998 !important;
+  }
+
+  .modal-dialog {
+    z-index: 10000 !important;
+    position: relative;
+  }
+
   .modal-content {
-    background: rgba(33, 37, 41, 0.95) !important;
+    background: rgba(33, 37, 41, 0.98) !important;
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 1rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    position: relative;
+    z-index: 10001 !important;
   }
 
   .modal-header {
@@ -233,6 +247,132 @@
     color: rgba(255, 255, 255, 0.6) !important;
   }
 
+  /* Student enrollment styles */
+  .student-search-box {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .student-search-box input {
+    padding-right: 3rem;
+  }
+
+  .student-search-box i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+  }
+
+  .students-list {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .students-list::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .students-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  .students-list::-webkit-scrollbar-thumb {
+    background: rgba(102, 126, 234, 0.5);
+    border-radius: 4px;
+  }
+
+  .student-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .student-item:hover {
+    background: rgba(102, 126, 234, 0.1);
+    border-color: rgba(102, 126, 234, 0.3);
+  }
+
+  .student-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .student-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .student-details h6 {
+    color: white;
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .student-details p {
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+    font-size: 0.85rem;
+  }
+
+  .student-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #667eea;
+  }
+
+  .enrolled-count {
+    display: inline-block;
+    background: rgba(102, 126, 234, 0.2);
+    color: #667eea;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+  }
+
+  .select-all-section {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: rgba(102, 126, 234, 0.1);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .select-all-section label {
+    color: white;
+    margin: 0;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
   @media (max-width: 768px) {
     body::before, body::after {
       width: 400px;
@@ -256,7 +396,7 @@
      style="position: fixed; 
             top: 20px; 
             right: 20px; 
-            z-index: 9999; 
+            z-index: 1070; 
             width: 300px;">
 </div>
 
@@ -285,6 +425,8 @@
                 <th>Course Name</th>
                 <th>Instructor</th>
                 <th>Course Code</th>
+                <th>Course Description</th>
+                <th>Credits</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -296,6 +438,8 @@
                 <td><?= esc($course['course_name']) ?></td>
                 <td><?= esc($course['course_instructor'] ?? 'No Instructor') ?></td>
                 <td><?= esc($course['course_code']) ?></td>
+                <td><?= esc($course['course_description']) ?></td>
+                <td><?= esc($course['credits']) ?></td>
                 <td>
                     <!-- Edit -->
                     <button class="btn btn-sm btn-outline-light"
@@ -312,16 +456,13 @@
                     </a>
 
                     <!-- Assign/Remove Instructor -->
-                    <button class="btn btn-sm btn-outline-warning"
-                            data-bs-toggle="modal"
-                            data-bs-target="#assignInstructorModal<?= $course['id'] ?>">
-                        <i class="bi bi-people"></i>
-                    </button>
+                  
                 </td>
             </tr>
+
             <?php endforeach; ?>
         <?php else: ?>
-            <tr><td colspan="4" class="text-muted">No courses found.</td></tr>
+            <tr><td colspan="6" class="text-muted">No courses found.</td></tr>
         <?php endif; ?>
         </tbody>
     </table>
@@ -329,11 +470,147 @@
 
 </main>
 
+     <?php if (!empty($courses)): ?>
+        <?php foreach ($courses as $course): ?>
+  <!-- ENROLL STUDENTS MODAL FOR EACH COURSE -->
+  <div class="modal fade" id="assignInstructorModal<?= $course['id'] ?>" tabindex="-1" style="z-index: 9999;">
+      <div class="modal-dialog modal-dialog-centered modal-lg" style="z-index: 10000;">
+          <div class="modal-content">
+              <div class="modal-header border-0">
+                  <h5 class="modal-title text-success">
+                      Enroll Students - <?= esc($course['course_name']) ?>
+                      <span class="enrolled-count" id="enrolledCount<?= $course['id'] ?>">0 selected</span>
+                  </h5>
+                  <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body">
+                  <form class="enrollStudentsForm" data-course-id="<?= $course['id'] ?>">
+                      <?= csrf_field() ?>
+
+                      <!-- Student Search -->
+                      <div class="student-search-box">
+                          <input type="text" 
+                                class="form-control studentSearch" 
+                                placeholder="Search students by name or ID..."
+                                data-course-id="<?= $course['id'] ?>">
+                          <i class="bi bi-search"></i>
+                      </div>
+
+                      <!-- Select All Option -->
+                      <div class="select-all-section">
+                          <input type="checkbox" 
+                                class="student-checkbox selectAll" 
+                                id="selectAll<?= $course['id'] ?>" 
+                                data-course-id="<?= $course['id'] ?>">
+                          <label for="selectAll<?= $course['id'] ?>">Select All Students</label>
+                      </div>
+
+                      <!-- Students List -->
+                      <div class="students-list" id="studentsList<?= $course['id'] ?>">
+                          <?php foreach($students as $student): ?>
+                              <?php 
+                                  // Check if student is already enrolled in this course
+                                  $isEnrolled = false;
+                                  foreach ($enrollments as $enroll) {
+                                      if ($enroll['user_id'] == $student['id'] && $enroll['course_id'] == $course['id']) {
+                                          $isEnrolled = true;
+                                          break;
+                                      }
+                                  }
+                              ?>
+                              <div class="student-item" 
+                                  data-student-name="<?= strtolower($student['name']) ?>" 
+                                  data-student-id="<?= $student['id'] ?>">
+                                  <div class="student-info">
+                                      <div class="student-avatar">
+                                          <?= strtoupper(substr($student['name'],0,1)) 
+                                            . (strpos($student['name'], ' ') !== false ? strtoupper(substr(strstr($student['name'], ' '),1,1)) : '') ?>
+                                      </div>
+                                      <div class="student-details">
+                                          <h6><?= esc($student['name']) ?></h6>
+                                          <p>ID: <?= esc($student['id']) ?></p>
+                                      </div>
+                                  </div>
+                                  <input type="checkbox" 
+                                        class="student-checkbox student-select" 
+                                        name="students[]" 
+                                        value="<?= $student['id'] ?>" 
+                                        data-course-id="<?= $course['id'] ?>"
+                                        <?= $isEnrolled ? 'checked' : '' ?>>
+                              </div>
+                          <?php endforeach; ?>
+                      </div>
+
+                      <button type="submit" class="btn btn-success w-100 mt-3">Enroll Selected Students</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+
+ <!-- EDIT COURSE MODAL FOR EACH COURSE -->
+            <div class="modal fade" id="editCourseModal<?= $course['id'] ?>" tabindex="-1" style="z-index: 9999;">
+              <div class="modal-dialog modal-dialog-centered" style="z-index: 10000;">
+                <div class="modal-content">
+                  <div class="modal-header border-0">
+                    <h5 class="modal-title text-success">Edit Course</h5>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="editCourseForm" data-course-id="<?= $course['id'] ?>">
+                      <?= csrf_field() ?>
+                      
+                      <div class="mb-3">
+                        <label class="form-label">Course Name</label>
+                        <input type="text" name="course_name" class="form-control bg-dark text-white" 
+                               value="<?= esc($course['course_name']) ?>" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Course Code</label>
+                        <input type="text" name="course_code" class="form-control bg-dark text-white"
+                               value="<?= esc($course['course_code']) ?>">
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Course Instructor</label>
+                        <select name="course_instructor" class="form-select bg-dark text-white" required>
+                          <option value="">None</option>
+                          <?php foreach ($teachers as $t): ?>
+                            <option value="<?= $t['name'] ?>" 
+                                    <?= ($course['course_instructor'] == $t['name']) ? 'selected' : '' ?>>
+                              <?= esc($t['name']) ?>
+                            </option>
+                          <?php endforeach; ?>
+                        </select>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Course Description</label>
+                        <input type="text" name="course_description" class="form-control bg-dark text-white" 
+                               value="<?= esc($course['course_description']) ?>" required>
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Credits</label>
+                        <input type="text" name="credits" class="form-control bg-dark text-white" 
+                               value="<?= esc($course['credits']) ?>" pattern="[A-Za-z0-9 ]+" required>
+                      </div>
+
+                      <button type="submit" class="btn btn-success w-100">Update Course</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
 
 
 <!-- ADD COURSE MODAL -->
-<div class="modal fade" id="addCourseModal" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="addCourseModal" tabindex="-1" style="z-index: 9999;">
+  <div class="modal-dialog modal-dialog-centered" style="z-index: 10000;">
     <div class="modal-content">
 
       <div class="modal-header border-0">
@@ -358,13 +635,25 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Course Instructor (Optional)</label>
-                <select name="course_instructor" class="form-select bg-dark text-white">
+                <label class="form-label">Course Instructor</label>
+                <select name="course_instructor" class="form-select bg-dark text-white" required>
                     <option value="">None</option>
                     <?php foreach ($teachers as $t): ?>
                         <option value="<?= $t['name'] ?>"><?= esc($t['name']) ?></option>
                     <?php endforeach; ?>
                 </select>
+            </div>
+
+             <div class="mb-3">
+                <label class="form-label">Course Description</label>
+                <input type="text" name="course_description" class="form-control bg-dark text-white" required>
+            </div>
+
+             <div class="mb-3">
+                <label class="form-label">Credits</label>
+                <input type="text" name="credits" class="form-control bg-dark text-white" 
+                pattern="[A-Za-z0-9 ]+" required>
+
             </div>
 
             <button type="submit" class="btn btn-success w-100">Save</button>
@@ -381,8 +670,18 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+
 <script>
 $(document).ready(function () {
+
+    // Fix Bootstrap modal z-index issue
+    $(document).on('show.bs.modal', '.modal', function () {
+        const zIndex = 9999 + (10 * $('.modal:visible').length);
+        $(this).css('z-index', zIndex);
+        setTimeout(function() {
+            $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+        }, 0);
+    });
 
     function showFloating(type, message) {
         let alert = $(`
@@ -401,9 +700,9 @@ $(document).ready(function () {
         }, 3000);
     }
 
-    // PREVENT PAGE RELOAD — AJAX SUBMISSION
+    // PREVENT PAGE RELOAD — AJAX SUBMISSION FOR ADD COURSE
     $("#addCourseForm").on("submit", function(e) {
-        e.preventDefault(); // stop page reload
+        e.preventDefault();
 
         $.ajax({
             url: "<?= base_url('course/add') ?>",
@@ -413,13 +712,108 @@ $(document).ready(function () {
                 showFloating("success", "Course added successfully!");
                 $("#addCourseModal").modal("hide");
                 $("#addCourseForm")[0].reset();
-                // OPTIONAL: reload the table without full page reload
-                location.reload(); // remove this if you're using AJAX to refresh the table
+                location.reload();
             },
             error: function() {
                 showFloating("danger", "Error adding course.");
             }
         });
+    });
+
+    // EDIT COURSE FORM SUBMISSION
+    document.querySelectorAll('.editCourseForm').forEach(form => {
+      form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          let courseId = this.getAttribute('data-course-id');
+          let formData = new FormData(this);
+
+          fetch("<?= base_url('courses/update/') ?>" + courseId, {
+              method: 'POST',
+              body: formData
+          })
+          .then(res => res.json())
+          .then(data => {
+
+              if (data.status === 'success') {
+                  alert(data.message);
+                  location.reload();
+              } else {
+                  alert("Error: " + JSON.stringify(data.errors));
+              }
+
+          })
+          .catch(err => console.error(err));
+      });
+  });
+
+    // ENROLL STUDENTS FORM SUBMISSION
+ $(".enrollStudentsForm").on("submit", function(e) {
+      e.preventDefault();
+      let courseId = $(this).data('course-id');
+      let formData = $(this).serialize(); // includes csrf token if present
+
+      $.ajax({
+          url: "<?= base_url('course/enroll/') ?>" + courseId,
+          method: "POST",
+          data: formData,
+          success: function(response) {
+              showFloating("success", "Students enrolled successfully!");
+              $("#assignInstructorModal" + courseId).modal("hide");
+              $("#studentsList" + courseId + " .student-select").prop('checked', false);
+              $("#selectAll" + courseId).prop('checked', false);
+              updateEnrolledCount(courseId);
+          },
+          error: function(xhr) {
+              console.log(xhr.responseText); // debug
+              showFloating("danger", "Error enrolling students.");
+          }
+      });
+  });
+
+
+    // STUDENT SEARCH FUNCTIONALITY
+    $(".studentSearch").on("input", function() {
+        let searchTerm = $(this).val().toLowerCase();
+        let courseId = $(this).data('course-id');
+        
+        $("#studentsList" + courseId + " .student-item").each(function() {
+            let name = $(this).data('student-name');
+            let id = $(this).data('student-id').toString();
+            
+            if (name.includes(searchTerm) || id.includes(searchTerm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+
+    // SELECT ALL FUNCTIONALITY
+    $(".selectAll").on("change", function() {
+        let courseId = $(this).data('course-id');
+        let isChecked = $(this).prop('checked');
+        
+        $("#studentsList" + courseId + " .student-item:visible .student-select").prop('checked', isChecked);
+        updateEnrolledCount(courseId);
+    });
+
+    // UPDATE ENROLLED COUNT
+  function updateEnrolledCount(courseId) {
+        let count = $("#studentsList" + courseId + " .student-select:checked").length;
+        $("#enrolledCount" + courseId).text(count + " selected");
+    }
+                          
+    // Initialize count for all courses
+    $(".enrollStudentsForm").each(function() {
+        let courseId = $(this).data('course-id');
+        updateEnrolledCount(courseId);
+    });
+
+    // Initialize counts for all courses
+    $(".enrollStudentsForm").each(function() {
+        let courseId = $(this).data('course-id');
+        updateEnrolledCount(courseId);
     });
 
 });

@@ -47,6 +47,29 @@ $routes->get('/course/admin', 'Home::courseAdmin');
 $routes->post('/course/add/', 'Home::addCourse');
 $routes->get('/course/add/', 'Home::addCourse');
 $routes->get('/admin/enrollments', 'Home::adminEnroll');
+$routes->post('admin/enroll-student', 'Home::enrollStudent');
+$routes->get('enrollment/admin/approve/(:num)', 'adminenroll::approve/$1');
+$routes->get('enrollment/admin/reject/(:num)', 'adminenroll::reject/$1');
+$routes->get('enrollment/admin/unenroll/(:num)', 'adminenroll::unenroll/$1');
+$routes->post('/teacher/course/create', 'TeacherCourses::createCourse');
+/**
+ * lab7
+ */
+$routes->get('/teacher/course', 'Materials::upload/$1');
+$routes->get('/teacher/classes', 'Home::myClasses');
+$routes->get('/teacher/addCourse', 'Home::tCourse');
+$routes->post('/teacher/course', 'Materials::upload/$1');
+$routes->get('/materials/delete/(:num)', 'Materials::delete/$1');
+$routes->get('/materials/download/(:num)', 'Materials::download/$1');
+$routes->post('/courses/update/(:num)', 'Course::update/$1');
+$routes->post('course/enroll/(:num)', 'adminCourse::enroll/$1');
+$routes->get('courses/delete/(:num)', 'adminCourse::delete/$1');
+$routes->get('/admin/upload', 'Home::courseUpload');
+
+
+
+
+
 /**
  * for midterm xam
  */

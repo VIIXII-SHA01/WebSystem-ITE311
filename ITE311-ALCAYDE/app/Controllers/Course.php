@@ -262,6 +262,52 @@ class Course extends Controller
 // Closes the view call.
 
     }
+
+    public function update($id) {
+        $response = [];
+
+        $courseModel = new courseModel();
+        
+           
+
+        // Validate input (basic server-side validation)
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'course_name'        => 'required|min_length[3]',
+            'course_code'        => 'permit_empty',
+            'course_instructor'  => 'required',
+            'course_description' => 'required',
+            'credits'            => 'required|alpha_numeric_space'
+        ]);
+
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'errors' => $validation->getErrors()
+            ]);
+        }
+
+        // Sanitize data coming from modal
+        $data = [
+            'course_name'        => $this->request->getPost('course_name'),
+            'course_code'        => $this->request->getPost('course_code'),
+            'course_instructor'  => $this->request->getPost('course_instructor'),
+            'course_description' => $this->request->getPost('course_description'),
+            'credits'            => $this->request->getPost('credits'),
+        ];
+
+        // Update course
+        $courseModel->update($id, $data);
+
+        return $this->response->setJSON([
+            'status' => 'success',
+            'message' => 'Course updated successfully.'
+        ]);
+        
+
+
+    }
+
 // This is the closing brace for the studentCourses method.
 
 }

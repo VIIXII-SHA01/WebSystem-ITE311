@@ -301,7 +301,6 @@
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" type="button">
                 <i class="bi bi-hourglass-split"></i> Pending Requests
-                <span class="badge bg-warning ms-2">3</span>
             </button>
         </li>
         <li class="nav-item" role="presentation">
@@ -327,59 +326,55 @@
                         <tr>
                             <th>Student Name</th>
                             <th>Email</th>
-                            <th>Course</th>
-                            <th>Request Date</th>
+                            <th>Enrolled Date</th>
+                            <th>Academic Year</th>
+                            <th>Control Number</th>
+                            <th>Semester</th>
+                            <th>Year Level</th>
+                            <th>Term</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Sample Pending Data -->
-                        <tr>
-                            <td>John Doe</td>
-                            <td>john@example.com</td>
-                            <td>Introduction to PHP</td>
-                            <td>2024-01-15</td>
-                            <td><span class="badge bg-warning"><i class="bi bi-clock"></i> Pending</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-success" onclick="return confirm('Approve this enrollment?')">
-                                    <i class="bi bi-check-lg"></i> Approve
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Reject this enrollment?')">
-                                    <i class="bi bi-x-lg"></i> Reject
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Jane Smith</td>
-                            <td>jane@example.com</td>
-                            <td>Web Development Basics</td>
-                            <td>2024-01-16</td>
-                            <td><span class="badge bg-warning"><i class="bi bi-clock"></i> Pending</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-success" onclick="return confirm('Approve this enrollment?')">
-                                    <i class="bi bi-check-lg"></i> Approve
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Reject this enrollment?')">
-                                    <i class="bi bi-x-lg"></i> Reject
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Mike Johnson</td>
-                            <td>mike@example.com</td>
-                            <td>Database Design</td>
-                            <td>2024-01-17</td>
-                            <td><span class="badge bg-warning"><i class="bi bi-clock"></i> Pending</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-success" onclick="return confirm('Approve this enrollment?')">
-                                    <i class="bi bi-check-lg"></i> Approve
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Reject this enrollment?')">
-                                    <i class="bi bi-x-lg"></i> Reject
-                                </button>
-                            </td>
-                        </tr>
+                      <tbody>
+                        <?php if (!empty($pending)): ?>
+                            <?php foreach ($pending as $row): ?>
+                                <tr>
+                             <td><?= esc($row['name']) ?></td>
+                            <td><?= esc($row['email']) ?></td>
+                            <td><?= esc($row['enrolled_date']) ?></td>
+                            <td><?= esc($row['academic_year']) ?></td>
+                            <td><?= esc($row['Control_Number']) ?></td>
+                            <td><?= esc($row['Semester']) ?></td>
+                            <td><?= esc($row['Year_Level']) ?></td>
+                            <td><?= esc($row['term']) ?></td>
+                                    <td>
+                                        <span class="badge bg-warning">
+                                            <i class="bi bi-clock"></i> Pending
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url('enrollment/admin/approve/' . $row->id) ?>" 
+                                        class="btn btn-sm btn-outline-success"
+                                        onclick="return confirm('Approve this enrollment?')">
+                                        <i class="bi bi-check-lg"></i> Approve
+                                        </a>
+
+                                        <a href="<?= base_url('enrollment/admin/reject/' . $row->id) ?>" 
+                                        class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Reject this enrollment?')">
+                                        <i class="bi bi-x-lg"></i> Reject
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="10" class="text-muted">No pending enrollments.</td></tr>
+                        <?php endif; ?>
+                    </tbody>
+
                     </tbody>
                 </table>
             </div>
@@ -393,38 +388,48 @@
                         <tr>
                             <th>Student Name</th>
                             <th>Email</th>
-                            <th>Course</th>
                             <th>Enrolled Date</th>
+                            <th>Academic Year</th>
+                            <th>Control Number</th>
+                            <th>Semester</th>
+                            <th>Year Level</th>
+                            <th>Term</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Sample Approved Data -->
-                        <tr>
-                            <td>Alice Brown</td>
-                            <td>alice@example.com</td>
-                            <td>Advanced JavaScript</td>
-                            <td>2024-01-10</td>
-                            <td><span class="badge bg-success"><i class="bi bi-check-circle"></i> Approved</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Unenroll this student?')">
-                                    <i class="bi bi-person-dash"></i> Unenroll
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Bob Wilson</td>
-                            <td>bob@example.com</td>
-                            <td>Python Programming</td>
-                            <td>2024-01-12</td>
-                            <td><span class="badge bg-success"><i class="bi bi-check-circle"></i> Approved</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Unenroll this student?')">
-                                    <i class="bi bi-person-dash"></i> Unenroll
-                                </button>
-                            </td>
-                        </tr>
+                      <tbody>
+                        <?php if (!empty($approved)): ?>
+                            <?php foreach ($approved as $row): ?>
+                                <tr>
+                                   <td><?= esc($row['name']) ?></td>
+                                    <td><?= esc($row['email']) ?></td>
+                                    <td><?= esc($row['enrolled_date']) ?></td>
+                                    <td><?= esc($row['academic_year']) ?></td>
+                                    <td><?= esc($row['Control_Number']) ?></td>
+                                    <td><?= esc($row['Semester']) ?></td>
+                                    <td><?= esc($row['Year_Level']) ?></td>
+                                    <td><?= esc($row['term']) ?></td>
+                                    <td>
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-check-circle"></i> Approved
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url('enrollment/admin/unenroll/' . $row['id']) ?>" 
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="return confirm('Unenroll this student?')">
+                                                <i class="bi bi-person-dash"></i> Unenroll
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="10" class="text-muted">No approved enrollments.</td></tr>
+                        <?php endif; ?>
+                    </tbody>
                     </tbody>
                 </table>
             </div>
@@ -438,54 +443,74 @@
                         <tr>
                             <th>Student Name</th>
                             <th>Email</th>
-                            <th>Course</th>
-                            <th>Date</th>
+                            <th>Enrolled Date</th>
+                            <th>Academic Year</th>
+                            <th>Control Number</th>
+                            <th>Semester</th>
+                            <th>Year Level</th>
+                            <th>Term</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Combined Data -->
-                        <tr>
-                            <td>Alice Brown</td>
-                            <td>alice@example.com</td>
-                            <td>Advanced JavaScript</td>
-                            <td>2024-01-10</td>
-                            <td><span class="badge bg-success"><i class="bi bi-check-circle"></i> Approved</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Unenroll this student?')">
-                                    <i class="bi bi-person-dash"></i> Unenroll
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Bob Wilson</td>
-                            <td>bob@example.com</td>
-                            <td>Python Programming</td>
-                            <td>2024-01-12</td>
-                            <td><span class="badge bg-success"><i class="bi bi-check-circle"></i> Approved</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Unenroll this student?')">
-                                    <i class="bi bi-person-dash"></i> Unenroll
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>John Doe</td>
-                            <td>john@example.com</td>
-                            <td>Introduction to PHP</td>
-                            <td>2024-01-15</td>
-                            <td><span class="badge bg-warning"><i class="bi bi-clock"></i> Pending</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-success" onclick="return confirm('Approve this enrollment?')">
-                                    <i class="bi bi-check-lg"></i> Approve
-                                </button>
-                                <button class="btn btn-sm btn-outline-danger" onclick="return confirm('Reject this enrollment?')">
-                                    <i class="bi bi-x-lg"></i> Reject
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
+                   <tbody>
+                    <?php if (!empty($all)): ?>
+                        <?php foreach ($all as $row): ?>
+                            <tr>
+                                <td><?= esc($row['name']) ?></td>
+                                <td><?= esc($row['email']) ?></td>
+                                <td><?= esc($row['enrolled_date']) ?></td>
+                                <td><?= esc($row['academic_year']) ?></td>
+                                <td><?= esc($row['Control_Number']) ?></td>
+                                <td><?= esc($row['Semester']) ?></td>
+                                <td><?= esc($row['Year_Level']) ?></td>
+                                <td><?= esc($row['term']) ?></td>
+                                <td>
+                                    <?php if ($row['enrollment_status'] == 'approved'): ?>
+                                        <span class="badge bg-success">
+                                            <i class="bi bi-check-circle"></i> Approved
+                                        </span>
+                                    <?php else: ?>
+                                        <span class="badge bg-warning">
+                                            <i class="bi bi-clock"></i> Pending
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
+
+                                <td>
+                                  <?php if ($row['enrollment_status'] === 'pending'): ?>
+                                    <!-- APPROVE -->
+                                    <a href="<?= base_url('enrollment/admin/approve/' . $row['id']) ?>" 
+                                    class="btn btn-sm btn-outline-success"
+                                    onclick="return confirm('Approve this enrollment?')">
+                                        <i class="bi bi-check-lg"></i> Approve
+                                    </a>
+
+                                    <!-- REJECT -->
+                                    <a href="<?= base_url('enrollment/admin/reject/' . $row['id']) ?>" 
+                                    class="btn btn-sm btn-outline-danger"
+                                    onclick="return confirm('Reject this enrollment?')">
+                                        <i class="bi bi-x-lg"></i> Reject
+                                    </a>
+
+                                <?php else: ?>
+
+                                    <!-- UNENROLL -->
+                                    <a href="<?= base_url('enrollment/admin/unenroll/' . $row['id']) ?>" 
+                                    class="btn btn-sm btn-outline-danger"
+                                    onclick="return confirm('Unenroll this student?')">
+                                        <i class="bi bi-person-dash"></i> Unenroll
+                                    </a>
+                                <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="10" class="text-muted">No enrollment records found.</td></tr>
+                    <?php endif; ?>
+                </tbody>
                 </table>
             </div>
         </div>
@@ -503,27 +528,65 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="<?= base_url('enrollment/admin/enroll') ?>">
+               <form method="post" action="<?= base_url('admin/enroll-student') ?>">
                     <?= csrf_field() ?>
                     
                     <div class="mb-3">
                         <label class="form-label">Select Student</label>
-                        <select name="student_id" class="form-select" required>
-                            <option value="">Choose a student...</option>
-                            <option value="1">John Doe (john@example.com)</option>
-                            <option value="2">Jane Smith (jane@example.com)</option>
-                            <option value="3">Mike Johnson (mike@example.com)</option>
-                        </select>
+                     <select name="student_id" class="form-select" required>
+                        <option value="">Choose a student...</option>
+                        <?php foreach ($students as $stu): ?>
+                            <option value="<?= $stu['id'] ?>">
+                                <?= esc($stu['name']) ?> (<?= esc($stu['email']) ?>)
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Select Course</label>
-                        <select name="course_id" class="form-select" required>
-                            <option value="">Choose a course...</option>
-                            <option value="1">Introduction to PHP</option>
-                            <option value="2">Web Development Basics</option>
-                            <option value="3">Database Design</option>
-                            <option value="4">Advanced JavaScript</option>
+                      <select name="course_id" class="form-select" required>
+                        <option value="">Choose a course...</option>
+                        <?php foreach ($courses as $course): ?>
+                            <option value="<?= $course['id'] ?>">
+                                <?= esc($course['course_name']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Year Level</label>
+                        <select name="year_level" class="form-select" required>
+                            <option value="1st Year">First Year</option>
+                            <option value="2nd Year">Second Year</option>
+                            <option value="3rd Year">Third Year</option>
+                            <option value="4th Year">Fourth Year</option>
+                        </select>
+                    </div>
+
+                      <div class="mb-3">
+                        <label class="form-label">Academic Year</label>
+                        <select name="academic_year" class="form-select" required>
+                            <option value="2024-2025">2024-2025</option>
+                            <option value="2025-2026">2025-2026</option>
+                            <option value="2027-2028">2027-2028</option>
+                            <option value="2028-2029">2028-2029</option>
+                        </select>
+                    </div>
+
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Control Number</label>
+                       <input type="number" class="form-control" name="control_number" placeholder="Enter Control Number" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Term</label>
+                        <select name="term" class="form-select" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
                         </select>
                     </div>
 
@@ -531,7 +594,7 @@
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select" required>
                             <option value="approved">Approve Immediately</option>
-                            <option value="pending">Mark as Pending</option>
+                            <option value="pending">Mark As Pending</option>
                         </select>
                     </div>
 

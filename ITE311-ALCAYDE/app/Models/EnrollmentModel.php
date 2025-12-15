@@ -132,6 +132,62 @@ class EnrollmentModel extends Model
 
     }
 // This is the closing brace for the isAlreadyEnrolled method.
+public function getAllEnrollments()
+{
+    return $this->select('
+            enrollments.id,
+            users.name,
+            users.email,
+            enrollments.enrolled_date,
+            enrollments.academic_year,
+            enrollments.Control_Number,
+            enrollments.Semester,
+            enrollments.Year_Level,
+            enrollments.term,
+            enrollments.enrollment_status
+        ')
+        ->join('users', 'users.id = enrollments.user_id')
+        ->findAll();
+}
+
+public function getPendingEnrollments()
+{
+    return $this->select('
+            enrollments.id,
+            users.name,
+            users.email,
+            enrollments.enrolled_date,
+            enrollments.academic_year,
+            enrollments.Control_Number,
+            enrollments.Semester,
+            enrollments.Year_Level,
+            enrollments.term,
+            enrollments.enrollment_status
+        ')
+        ->join('users', 'users.id = enrollments.user_id')
+        ->where('enrollment_status', 'pending')
+        ->findAll();
+}
+
+public function getApprovedEnrollments()
+{
+    return $this->select('
+            enrollments.id,
+            users.name,
+            users.email,
+            enrollments.enrolled_date,
+            enrollments.academic_year,
+            enrollments.Control_Number,
+            enrollments.Semester,
+            enrollments.Year_Level,
+            enrollments.term,
+            enrollments.enrollment_status
+        ')
+        ->join('users', 'users.id = enrollments.user_id')
+        ->where('enrollment_status', 'approved')
+        ->findAll();
+}
+
 
 }
 // This is the closing brace for the EnrollmentModel class.
